@@ -6,22 +6,3 @@
     grid-template-areas: "header header" "nav content";
     grid-gap: 10px;
 }
-
-.header {
-    grid-area: header;
-    background: aquamarine;
-}
-
-.header img {
-    width: 80px;
-}
-
-.nav {
-    grid-area: nav;
-    background: aquamarine;
-}
-
-.content {
-    grid-area: content;
-    background: burlywood;
-}
