@@ -1,0 +1,22 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.dialogsItems {
+
+}
+
+.dialog {
+
+}
+
+.dialog.active {
+    color :red;
+}
+
+.dialogsMessages {
+
+}
+
+.message {}
