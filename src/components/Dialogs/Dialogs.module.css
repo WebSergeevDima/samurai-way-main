@@ -8,7 +8,7 @@
 }
 
 .dialog {
-
+    display: block;
 }
 
 .dialog.active {
