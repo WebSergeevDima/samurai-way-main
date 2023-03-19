@@ -1,0 +1,8 @@
+.sidebar {
+    display: flex;
+}
+
+.sidebar img {
+    width: 20px;
+    height: 20px;
+}

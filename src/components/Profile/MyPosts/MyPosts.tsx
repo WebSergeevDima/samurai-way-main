@@ -1,14 +1,21 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
+import {PostsDataType} from "../../../App";
 
-const MyPosts: React.FC = () => {
+type MyPostsPropsType = {
+    postsData: PostsDataType[]
+};
+
+const MyPosts: React.FC<MyPostsPropsType> = (props) => {
+
+    const postsElements = props.postsData.map(item=><Post message={item.message}/> );
+
     return (
         <div>
             <div className={s.title}>My posts</div>
             <div>New post</div>
-            <Post message={'Post 1'}/>
-            <Post message={'Post 2'}/>
+            {postsElements}
         </div>
     );
 };

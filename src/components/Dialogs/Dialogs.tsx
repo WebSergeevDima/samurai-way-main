@@ -1,31 +1,19 @@
 import React from "react";
 import s from './Dialogs.module.css';
-import {NavLink} from "react-router-dom";
+import DialogItem from "./DialogItem/DialogItem";
+import Message from "./Message/Message";
+import {DialogsDataType, MessagesDataType} from "../../App";
 
-type DialogItemPropsType = {
-    name: string
-    id: string
+type DialogsPropsType = {
+    dialogsData: DialogsDataType[]
+    messagesData: MessagesDataType[]
 }
 
-const DialogItem: React.FC<DialogItemPropsType> = (props) => {
-    return (
-      <div>
-          <NavLink activeClassName={`${s.active}`} to={'/dialogs/' + props.id} className={`${s.dialog}`}>{props.name}</NavLink>
-      </div>
-    );
-}
+const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
-type MessagePropsType = {
-    message: string
-}
+    const dialogsElements = props.dialogsData.map(item => <DialogItem name={item.name} id={item.id}/>);
+    const messagesElements = props.messagesData.map(item => <Message message={item.message}/>);
 
-const Message: React.FC<MessagePropsType> = (props) => {
-    return (
-      <div className={s.message}>{props.message}</div>
-    );
-}
-
-const Dialogs: React.FC = () => {
     return (
         <div>
 
@@ -33,16 +21,10 @@ const Dialogs: React.FC = () => {
 
             <div className={s.dialogs}>
                 <div className={s.dialogsItems}>
-                    <DialogItem name="Dima" id="1"/>
-                    <DialogItem name="Dima2" id="2"/>
-                    <DialogItem name="Dima3" id="3"/>
-                    <DialogItem name="Dima4" id="4"/>
-                    <DialogItem name="Dima5" id="5"/>
+                    {dialogsElements}
                 </div>
                 <div className={s.dialogsMessages}>
-                    <Message message={'Hello!'}/>
-                    <Message message={'Hello2222!'}/>
-                    <Message message={'Hello333333!'}/>
+                    {messagesElements}
                 </div>
             </div>
 
