@@ -11,8 +11,17 @@ type DialogsPropsType = {
 
 const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
+    const meffageTextareaRef = React.createRef<HTMLTextAreaElement>();
+
     const dialogsElements = props.dialogsData.map(item => <DialogItem name={item.name} id={item.id}/>);
     const messagesElements = props.messagesData.map(item => <Message message={item.message}/>);
+
+
+
+    const addMessageHandler = () => {
+        let text = meffageTextareaRef.current?.value;
+        alert(text);
+    };
 
     return (
         <div>
@@ -25,7 +34,13 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
                 </div>
                 <div className={s.dialogsMessages}>
                     {messagesElements}
+
+                    <div>
+                        <textarea ref={meffageTextareaRef}></textarea>
+                        <button onClick={addMessageHandler}>Add new message</button>
+                    </div>
                 </div>
+
             </div>
 
         </div>

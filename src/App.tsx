@@ -12,6 +12,7 @@ import Setting from "./components/Setting/Setting";
 export type PostsDataType = {
     id: number
     message: string
+    likeCount: number
 };
 
 export type DialogsDataType = {
@@ -29,17 +30,22 @@ export type SidebarType = {
     img: string
 };
 
-type AppPropsType = {
-    appState: {
-        profilePage: {
-            postsData: PostsDataType[]
-        },
-        messagesPage: {
-            dialogsData: DialogsDataType[]
-            messagesData: MessagesDataType[]
-        },
-        sidebar: SidebarType[]
-    }
+export type AddPostType = (postMessage: string) => void
+
+export type AppStateType = {
+    profilePage: {
+        postsData: PostsDataType[]
+    },
+    messagesPage: {
+        dialogsData: DialogsDataType[]
+        messagesData: MessagesDataType[]
+    },
+    sidebar: SidebarType[]
+}
+
+export type AppPropsType = {
+    appState: AppStateType
+    addPost: AddPostType
 };
 
 const App: React.FC<AppPropsType> = (props) => {
@@ -49,7 +55,7 @@ const App: React.FC<AppPropsType> = (props) => {
                 <Header/>
                 <Navbar sidebar={props.appState.sidebar} />
                 <div className={'app-content'}>
-                    <Route path={'/profile'} render={()=><Profile postsData={props.appState.profilePage.postsData}/>}/>
+                    <Route path={'/profile'} render={()=><Profile postsData={props.appState.profilePage.postsData} addPost={props.addPost}/>}/>
                     <Route exact path={'/dialogs'} render={()=><Dialogs dialogsData={props.appState.messagesPage.dialogsData} messagesData={props.appState.messagesPage.messagesData} />}/>
                     <Route path={'/music'} component={Music}/>
                     <Route path={'/news'} component={News}/>
