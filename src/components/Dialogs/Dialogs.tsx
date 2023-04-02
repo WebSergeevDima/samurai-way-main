@@ -2,26 +2,33 @@ import React from "react";
 import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {DialogsDataType, MessagesDataType} from "../../App";
+import {AddMessageType, MessagesPageType, UpdateNewMessageTextType} from "../../App";
 
 type DialogsPropsType = {
-    dialogsData: DialogsDataType[]
-    messagesData: MessagesDataType[]
+    messagesPage: MessagesPageType
+    addMessage: AddMessageType
+    updateNewMessageText: UpdateNewMessageTextType
 }
 
 const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
-    const meffageTextareaRef = React.createRef<HTMLTextAreaElement>();
+    const messageTextareaRef = React.createRef<HTMLTextAreaElement>();
 
-    const dialogsElements = props.dialogsData.map(item => <DialogItem name={item.name} id={item.id}/>);
-    const messagesElements = props.messagesData.map(item => <Message message={item.message}/>);
-
-
+    const dialogsElements = props.messagesPage.dialogsData.map(item => <DialogItem name={item.name} id={item.id}/>);
+    const messagesElements = props.messagesPage.messagesData.map(item => <Message message={item.message}/>);
 
     const addMessageHandler = () => {
-        let text = meffageTextareaRef.current?.value;
-        alert(text);
+        props.addMessage();
     };
+
+    const changeTextareaHandler = () => {
+        const newText = messageTextareaRef.current?.value;
+
+        if(newText) {
+            props.updateNewMessageText(newText);
+        }
+
+    }
 
     return (
         <div>
@@ -36,7 +43,7 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
                     {messagesElements}
 
                     <div>
-                        <textarea ref={meffageTextareaRef}></textarea>
+                        <textarea ref={messageTextareaRef} onChange={changeTextareaHandler} value={props.messagesPage.newMessageText}></textarea>
                         <button onClick={addMessageHandler}>Add new message</button>
                     </div>
                 </div>

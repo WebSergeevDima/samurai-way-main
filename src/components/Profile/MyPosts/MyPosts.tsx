@@ -1,11 +1,13 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import {AddPostType, PostsDataType} from "../../../App";
+import {AddPostType, PostsDataType, UpdateNewPostTextType} from "../../../App";
 
 type MyPostsPropsType = {
+    newPostText: string
     postsData: PostsDataType[]
     addPost: AddPostType
+    updateNewPostText: UpdateNewPostTextType
 };
 
 const MyPosts: React.FC<MyPostsPropsType> = (props) => {
@@ -15,22 +17,24 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
     const postsElements = props.postsData.map(item=><Post message={item.message}/> );
 
     const addPostHandler = () => {
-
-        if(postTextareaRef.current) {
-            props.addPost(postTextareaRef.current.value);
-            postTextareaRef.current.value = '';
-        }
-
+            props.addPost();
     };
 
+    const changeTextareaHandler = () => {
+        const newText = postTextareaRef.current?.value;
 
+        if(newText) {
+            props.updateNewPostText(newText);
+        }
+
+    }
 
     return (
         <div>
             <div className={s.title}>My posts</div>
             <div>New post</div>
             <div>
-                <textarea ref={postTextareaRef} name="" id=""></textarea>
+                <textarea ref={postTextareaRef} onChange={changeTextareaHandler} value={props.newPostText} />
                 <button onClick={addPostHandler}>Add new post</button>
             </div>
 

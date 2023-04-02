@@ -10,6 +10,7 @@ const state = {
             {id: 2, message: 'Post 2', likeCount: 0},
             {id: 3, message: 'Post 3', likeCount: 0},
         ],
+        newPostText: ''
     },
     messagesPage: {
         dialogsData: [
@@ -22,7 +23,8 @@ const state = {
         messagesData: [
             {id: 1, message: 'Hello!'},
             {id: 2, message: 'Hello!222'},
-        ]
+        ],
+        newMessageText: ''
     },
     sidebar: [
         {
@@ -45,16 +47,36 @@ const state = {
 };
 
 
-export const addPost = (postMessage:string) => {
-    console.log(postMessage);
+export const addPost = () => {
     let newPost = {
         id: 5,
-        message: postMessage,
+        message: state.profilePage.newPostText,
         likeCount: 0
     }
     state.profilePage.postsData.push(newPost);
+    state.profilePage.newPostText = '';
     renderEntireTree(state);
 }
 
+export const updateNewPostText = (newText:string) => {
+    state.profilePage.newPostText = newText;
+    renderEntireTree(state);
+}
+
+
+export const addMessage = () => {
+    let newMessage = {
+        id: 6,
+        message: state.messagesPage.newMessageText
+    }
+    state.messagesPage.messagesData.push(newMessage);
+    state.messagesPage.newMessageText = '';
+    renderEntireTree(state);
+}
+
+export const updateNewMessageText = (newText:string) => {
+    state.messagesPage.newMessageText = newText;
+    renderEntireTree(state);
+}
 
 export default state;

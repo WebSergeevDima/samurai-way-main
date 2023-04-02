@@ -2,11 +2,12 @@ import React from "react";
 import './Profile.module.css';
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {AddPostType, PostsDataType} from "../../App";
+import {AddPostType, ProfilePageType, UpdateNewPostTextType} from "../../App";
 
 type ProfilePropsType = {
-    postsData: PostsDataType[]
+    profilePage: ProfilePageType
     addPost: AddPostType
+    updateNewPostText: UpdateNewPostTextType
 }
 
 const Profile: React.FC<ProfilePropsType> = (props) => {
@@ -14,7 +15,7 @@ const Profile: React.FC<ProfilePropsType> = (props) => {
     return (
         <main>
             <ProfileInfo/>
-            <MyPosts postsData={props.postsData} addPost={props.addPost}/>
+            <MyPosts newPostText={props.profilePage.newPostText} postsData={props.profilePage.postsData} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>
         </main>
     );
 };
