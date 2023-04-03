@@ -54,6 +54,14 @@ export type AppStateType = {
     sidebar: SidebarType[]
 }
 
+export type StoreType = {
+    appState: AppStateType
+    addPost: AddPostType
+    updateNewPostText: UpdateNewPostTextType
+    addMessage: AddMessageType
+    updateNewMessageText: UpdateNewMessageTextType
+}
+
 export type AppPropsType = {
     appState: AppStateType
     addPost: AddPostType

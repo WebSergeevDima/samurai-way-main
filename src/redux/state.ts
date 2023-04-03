@@ -1,7 +1,7 @@
-import {stat} from "fs";
-import post from "../components/Profile/MyPosts/Post/Post";
-import {PostsDataType} from "../App";
-import {renderEntireTree} from "../render";
+let renderEntireTree = (state: any) => {
+
+}
+
 
 const state = {
     profilePage: {
@@ -78,5 +78,10 @@ export const updateNewMessageText = (newText:string) => {
     state.messagesPage.newMessageText = newText;
     renderEntireTree(state);
 }
+
+export const subscribe = (observer: any) => {
+    renderEntireTree = observer;
+}
+
 
 export default state;
