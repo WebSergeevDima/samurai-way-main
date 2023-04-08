@@ -8,6 +8,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Setting from "./components/Setting/Setting";
+import {ActionsTypes} from "./redux/state";
 
 export type DialogsDataType = {
     id: number
@@ -24,9 +25,9 @@ export type SidebarType = {
     img: string
 };
 
-export type AddPostType = () => void
-
-export type UpdateNewPostTextType = (newPost: string) => void
+// export type AddPostType = () => void
+//
+// export type UpdateNewPostTextType = (newPost: string) => void
 
 export type AddMessageType = () => void
 
@@ -54,20 +55,22 @@ export type AppStateType = {
     sidebar: SidebarType[]
 }
 
-export type StoreType = {
-    appState: AppStateType
-    addPost: AddPostType
-    updateNewPostText: UpdateNewPostTextType
-    addMessage: AddMessageType
-    updateNewMessageText: UpdateNewMessageTextType
-}
+// export type StoreType = {
+//     appState: AppStateType
+//     addPost: AddPostType
+//     updateNewPostText: UpdateNewPostTextType
+//     addMessage: AddMessageType
+//     updateNewMessageText: UpdateNewMessageTextType
+// }
 
 export type AppPropsType = {
     appState: AppStateType
-    addPost: AddPostType
-    updateNewPostText: UpdateNewPostTextType
-    addMessage: AddMessageType
-    updateNewMessageText: UpdateNewMessageTextType
+    // addPost: AddPostType
+    // updateNewPostText: UpdateNewPostTextType
+    // addMessage: AddMessageType
+    // updateNewMessageText: UpdateNewMessageTextType
+
+    dispatch: (action: ActionsTypes) => void
 };
 
 const App: React.FC<AppPropsType> = (props) => {
@@ -78,11 +81,11 @@ const App: React.FC<AppPropsType> = (props) => {
                 <Navbar sidebar={props.appState.sidebar}/>
                 <div className={'app-content'}>
                     <Route path={'/profile'}
-                           render={() => <Profile updateNewPostText={props.updateNewPostText} profilePage={props.appState.profilePage}
-                                                  addPost={props.addPost}/>}/>
+                           render={() => <Profile profilePage={props.appState.profilePage}
+                                                  dispatch={props.dispatch}/>}/>
                     <Route exact path={'/dialogs'}
-                           render={() => <Dialogs messagesPage={props.appState.messagesPage}
-                               addMessage={props.addMessage} updateNewMessageText={props.updateNewMessageText}/>}/>
+                           render={() => <Dialogs dispatch={props.dispatch}
+                                                  messagesPage={props.appState.messagesPage}/>}/>
                     <Route path={'/music'} component={Music}/>
                     <Route path={'/news'} component={News}/>
                     <Route path={'/setting'} component={Setting}/>
