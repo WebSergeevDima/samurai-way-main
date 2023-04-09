@@ -1,3 +1,6 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+
 type AddPostActionType = {
     type: string
 }
@@ -104,6 +107,16 @@ const store = {
             this._callSubscriber();
         }
     }
+}
+
+
+export const AddPostActionCreator = () => {
+    return {
+        type: ADD_POST
+    };
+}
+export const UpdateNewPostTextActionCreator = (newText: string) => {
+    return {type: UPDATE_NEW_POST_TEXT, newPost: newText};
 }
 
 export default store;
