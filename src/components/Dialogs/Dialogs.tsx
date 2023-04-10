@@ -2,8 +2,9 @@ import React from "react";
 import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {AddMessageType, MessagesPageType, UpdateNewMessageTextType} from "../../App";
+import {MessagesPageType} from "../../App";
 import {ActionsTypes} from "../../redux/state";
+import {AddMessageActionCreator, UpdateNewMessageTextActionCreator} from "../../redux/dialogsReducer";
 
 type DialogsPropsType = {
     messagesPage: MessagesPageType
@@ -19,14 +20,14 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
     const messagesElements = props.messagesPage.messagesData.map(item => <Message message={item.message}/>);
 
     const addMessageHandler = () => {
-        props.dispatch({type: 'ADD-MESSAGE'});
+        props.dispatch(AddMessageActionCreator());
     };
 
     const changeTextareaHandler = () => {
         const newText = messageTextareaRef.current?.value;
 
         if (newText) {
-            props.dispatch({type: 'UPDATE-NEW-MESSAGE-TEXT', newPost: newText});
+            props.dispatch(UpdateNewMessageTextActionCreator(newText));
         }
 
     }

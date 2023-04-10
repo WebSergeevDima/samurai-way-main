@@ -2,7 +2,8 @@ import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import {PostsDataType} from "../../../App";
-import {ActionsTypes, AddPostActionCreator, UpdateNewPostTextActionCreator} from "../../../redux/state";
+import {ActionsTypes} from "../../../redux/state";
+import {AddPostActionCreator, UpdateNewPostTextActionCreator} from "../../../redux/profileReducer";
 
 type MyPostsPropsType = {
     newPostText: string
