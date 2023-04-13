@@ -25,10 +25,6 @@ export type SidebarType = {
     img: string
 };
 
-// export type AddPostType = () => void
-//
-// export type UpdateNewPostTextType = (newPost: string) => void
-
 export type AddMessageType = () => void
 
 export type UpdateNewMessageTextType = (newPost: string) => void
@@ -55,21 +51,8 @@ export type AppStateType = {
     sidebar: SidebarType[]
 }
 
-// export type StoreType = {
-//     appState: AppStateType
-//     addPost: AddPostType
-//     updateNewPostText: UpdateNewPostTextType
-//     addMessage: AddMessageType
-//     updateNewMessageText: UpdateNewMessageTextType
-// }
-
 export type AppPropsType = {
     appState: AppStateType
-    // addPost: AddPostType
-    // updateNewPostText: UpdateNewPostTextType
-    // addMessage: AddMessageType
-    // updateNewMessageText: UpdateNewMessageTextType
-
     dispatch: (action: ActionsTypes) => void
 };
 

@@ -26,7 +26,6 @@ export type ActionsTypes =
     | AddMessageActionType
     | UpdateNewMessageTextActionType;
 
-
 const store = {
 
     _state: {
@@ -84,7 +83,7 @@ const store = {
         this._callSubscriber = observer;
     },
 
-    dispatch(action: any) {
+    dispatch(action: ActionsTypes) {
 
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.messagesPage = dialogsReducer(this._state.messagesPage, action);

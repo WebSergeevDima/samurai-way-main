@@ -1,3 +1,5 @@
+import {ActionsTypes} from "./state";
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
@@ -21,13 +23,13 @@ const profileReducer = (state:any, action:any) => {
     }
 }
 
-export const AddPostActionCreator = () => {
+export const AddPostActionCreator = ():ActionsTypes => {
     return {
         type: ADD_POST
     };
 }
 
-export const UpdateNewPostTextActionCreator = (newText: string) => {
+export const UpdateNewPostTextActionCreator = (newText: string):ActionsTypes  => {
     return {type: UPDATE_NEW_POST_TEXT, newPost: newText};
 }
 
