@@ -3,7 +3,22 @@ import {ActionsTypes} from "./state";
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
-const dialogsReducer = (state:any, action:any) => {
+const initialState = {
+    dialogsData: [
+        {id: 1, name: 'Dima'},
+        {id: 2, name: 'Dima2'},
+        {id: 3, name: 'Dima3'},
+        {id: 4, name: 'Dima4'},
+        {id: 5, name: 'Dima5'},
+    ],
+    messagesData: [
+        {id: 1, message: 'Hello!'},
+        {id: 2, message: 'Hello!222'},
+    ],
+    newMessageText: ''
+};
+
+const dialogsReducer = (state:any = initialState, action:any) => {
 
     switch (action.type) {
         case ADD_MESSAGE:

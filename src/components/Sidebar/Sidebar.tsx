@@ -7,7 +7,7 @@ type SidebarPropsType = {
 }
 
 const Sidebar: React.FC<SidebarPropsType> = (props) => {
-    
+
     const sidebarElements = props.sidebar.map(item => {
         return (
             <div>
@@ -16,7 +16,7 @@ const Sidebar: React.FC<SidebarPropsType> = (props) => {
             </div>
         )
     });
-    
+
     return (
         <div className={s.sidebar}>
             {sidebarElements}
