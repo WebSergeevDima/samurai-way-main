@@ -58,17 +58,17 @@ export type AppPropsType = {
     dispatch: (action: ActionsTypes) => void
 };
 
-const App: React.FC<AppPropsType> = (props) => {
+const App: React.FC = (props) => {
     return (
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
-                <Navbar sidebar={props.appState.sidebar}/>
+                <Navbar/>
                 <div className={'app-content'}>
                     <Route path={'/profile'}
-                           render={() => <Profile store={store} />}/>
+                           render={() => <Profile/>}/>
                     <Route exact path={'/dialogs'}
-                           render={() => <DialogsContainer store={store}/>}/>
+                           render={() => <DialogsContainer/>}/>
                     <Route path={'/music'} component={Music}/>
                     <Route path={'/news'} component={News}/>
                     <Route path={'/setting'} component={Setting}/>

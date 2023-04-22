@@ -3,21 +3,20 @@ import './index.css';
 import ReactDOM from 'react-dom';
 import App from "./App";
 import store from "./redux/reduxStore";
+import {Provider} from "react-redux";
 
-const renderEntireTree = (state: any) => {
+const renderEntireTree = () => {
     ReactDOM.render(
-        <App
-            appState={state}
-            dispatch={store.dispatch.bind(store)}
-        />,
+        <Provider store={store}>
+            <App/>
+        </Provider>,
         document.getElementById('root')
     );
 }
 
 
-renderEntireTree(store.getState())
+renderEntireTree()
 store.subscribe(()=> {
-    let state = store.getState();
-    renderEntireTree(state);
+    renderEntireTree();
 });
 
