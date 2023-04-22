@@ -9,6 +9,8 @@ import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Setting from "./components/Setting/Setting";
 import {ActionsTypes} from "./redux/state";
+import store from "./redux/reduxStore";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 export type DialogsDataType = {
     id: number
@@ -64,11 +66,9 @@ const App: React.FC<AppPropsType> = (props) => {
                 <Navbar sidebar={props.appState.sidebar}/>
                 <div className={'app-content'}>
                     <Route path={'/profile'}
-                           render={() => <Profile profilePage={props.appState.profilePage}
-                                                  dispatch={props.dispatch}/>}/>
+                           render={() => <Profile store={store} />}/>
                     <Route exact path={'/dialogs'}
-                           render={() => <Dialogs dispatch={props.dispatch}
-                                                  messagesPage={props.appState.messagesPage}/>}/>
+                           render={() => <DialogsContainer store={store}/>}/>
                     <Route path={'/music'} component={Music}/>
                     <Route path={'/news'} component={News}/>
                     <Route path={'/setting'} component={Setting}/>
