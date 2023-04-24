@@ -11,6 +11,8 @@ import Setting from "./components/Setting/Setting";
 import {ActionsTypes} from "./redux/state";
 import store from "./redux/reduxStore";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import Users from "./components/Users/Users";
+import UsersContainer from "./components/Users/UsersContainer";
 
 export type DialogsDataType = {
     id: number
@@ -72,6 +74,7 @@ const App: React.FC = (props) => {
                     <Route path={'/music'} component={Music}/>
                     <Route path={'/news'} component={News}/>
                     <Route path={'/setting'} component={Setting}/>
+                    <Route path={'/users'} component={UsersContainer}/>
                 </div>
             </div>
         </BrowserRouter>

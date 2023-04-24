@@ -20,11 +20,41 @@ type UpdateNewMessageTextActionType = {
     newPost: string
 }
 
+type FollowUsersActionType = {
+    type: string,
+    userId: number
+}
+type UnfollowUsersActionType = {
+    type: string,
+    userId: number
+}
+
+type LocationType = {
+    city: string
+    country: string
+}
+
+type UsersType = {
+    id: number
+    photo: string
+    isFollow: boolean
+    fullName: string
+    status: string
+    location: LocationType
+}
+type SetUsersActionType = {
+    type: string,
+    users: UsersType[]
+}
+
 export type ActionsTypes =
     AddPostActionType
     | UpdateNewPostPostActionType
     | AddMessageActionType
-    | UpdateNewMessageTextActionType;
+    | UpdateNewMessageTextActionType
+    | FollowUsersActionType
+    | UnfollowUsersActionType
+    | SetUsersActionType;
 
 const store = {
 
