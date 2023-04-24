@@ -1,4 +1,6 @@
 import React from 'react';
+import style from './Users.module.css';
+
 
 const Users = (props:any) => {
 
@@ -17,10 +19,10 @@ const Users = (props:any) => {
         <div>
             {props.users.map((item:any) => {
                 return (
-                    <div key={item.userId}>
+                    <div key={item.userId} className={style.userItem}>
                         <div>
-                            <img src={item.photo}/>
-                            {item.isFollow ? <button onClick={()=>props.follow(item.id)}>UNFOLLOW</button> : <button onClick={()=>props.unfollow(item.id)}>FOLLOW</button>}
+                            <img src={item.photo} className={style.userItem__image}/>
+                            {item.isFollow ? <button onClick={()=>props.unfollow(item.id)}>UNFOLLOW</button> : <button onClick={()=>props.follow(item.id)}>FOLLOW</button>}
                         </div>
                         <div>
                             <div>{item.fullName}</div>
