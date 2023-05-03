@@ -2,7 +2,7 @@ import {ActionsTypes} from "./state";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
-const SET_USERS = 'SET_USERS';
+const SET_USERS = 'SET-USERS';
 
 type LocationType = {
     city: string
