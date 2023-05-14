@@ -11,7 +11,7 @@ import Setting from "./components/Setting/Setting";
 import {ActionsTypes} from "./redux/state";
 import store from "./redux/reduxStore";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import Users from "./components/Users/Users";
+import UsersOld from "./components/Users/UsersOld";
 import UsersContainer from "./components/Users/UsersContainer";
 
 export type DialogsDataType = {

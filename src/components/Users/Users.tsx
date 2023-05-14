@@ -14,46 +14,42 @@ export const instance = axios.create({
 });
 
 
-const Users = (props: any) => {
+class Users extends React.Component<any> {
 
-    axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response:any) => {
+    constructor(props: any) {
+        super(props);
 
-        if (props.users.length === 0) {
-            props.setUsers(response.data.items);
-        }
+        axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response: any) => {
 
-    });
-
-    // if(props.users.length === 0) {
-    //
-    //     props.setUsers([
-    //         {id: 1, photo: 'https://www.interfax.ru/ftproot/photos/photostory/2021/06/11/week4_1100.jpg', isFollow: true, fullName: 'Name 1', status: 'My status', location: {city: 'Moscow', country: 'Russia'}},
-    //         {id: 2, photo: 'https://www.interfax.ru/ftproot/photos/photostory/2021/06/11/week4_1100.jpg', isFollow: true, fullName: 'Name 2', status: 'My status 2', location: {city: 'Moscow 2', country: 'Russia 2'}},
-    //         {id: 3, photo: 'https://www.interfax.ru/ftproot/photos/photostory/2021/06/11/week4_1100.jpg', isFollow: false, fullName: 'Name 3', status: 'My status 3', location: {city: 'Moscow 3', country: 'Russia 3'}},
-    //     ]);
-    //
-    // }
+            this.props.setUsers(response.data.items);
 
 
-    return (
-        <div>
-            {props.users.map((item: any) => {
-                return (
-                    <div key={item.userId} className={style.userItem}>
-                        <div>
-                            <img src={item.photo} className={style.userItem__image}/>
-                            {item.isFollow ? <button onClick={() => props.unfollow(item.id)}>UNFOLLOW</button> :
-                                <button onClick={() => props.follow(item.id)}>FOLLOW</button>}
+        });
+    }
+
+    render() {
+
+        return (
+            <div>
+                {this.props.users.map((item: any) => {
+                    return (
+                        <div key={item.userId} className={style.userItem}>
+                            <div>
+                                <img src={item.photo} className={style.userItem__image}/>
+                                {item.isFollow ?
+                                    <button onClick={() => this.props.unfollow(item.id)}>UNFOLLOW</button> :
+                                    <button onClick={() => this.props.follow(item.id)}>FOLLOW</button>}
+                            </div>
+                            <div>
+                                <div>{item.name}</div>
+                                {/*<div>{item.location.city}</div>*/}
+                            </div>
                         </div>
-                        <div>
-                            <div>{item.name}</div>
-                            {/*<div>{item.location.city}</div>*/}
-                        </div>
-                    </div>
-                )
-            })}
-        </div>
-    );
+                    )
+                })}
+            </div>
+        );
+    }
 };
 
 
