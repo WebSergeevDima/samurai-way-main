@@ -16,15 +16,12 @@ export const instance = axios.create({
 
 class Users extends React.Component<any> {
 
-    constructor(props: any) {
-        super(props);
+    componentDidMount() {
 
         axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response: any) => {
-
             this.props.setUsers(response.data.items);
-
-
         });
+
     }
 
     render() {
