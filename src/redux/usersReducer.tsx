@@ -23,8 +23,8 @@ type UsersType = {
 const initialState= {
     users: [],
     pageSize: 5,
-    totalUsersCount: 16,
-    currentPage: 1
+    totalUsersCount: 36,
+    currentPage: 3
 };
 
 const profileReducer = (state: any = initialState, action: any) => {

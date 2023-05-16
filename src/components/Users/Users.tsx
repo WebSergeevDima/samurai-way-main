@@ -20,7 +20,7 @@ class Users extends React.Component<any> {
 
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then((response: any) => {
             this.props.setUsers(response.data.items);
-            this.props.totalUsersCount(response.data.totalCount);
+            this.props.setTotalUserCount(response.data.totalCount);
         });
 
     }
