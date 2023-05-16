@@ -5,3 +5,8 @@
 .userItem__image {
     width: 100px;
 }
+
+.activePage {
+    font-weight: bold;
+    text-decoration: underline;
+}

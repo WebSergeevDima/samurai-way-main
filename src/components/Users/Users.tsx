@@ -18,16 +18,38 @@ class Users extends React.Component<any> {
 
     componentDidMount() {
 
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response: any) => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then((response: any) => {
             this.props.setUsers(response.data.items);
+            this.props.totalUsersCount(response.data.totalCount);
         });
 
     }
 
+    onPageChanged = (pageNumber:any) => {
+
+        this.props.setCurrenPage(pageNumber);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then((response: any) => {
+            this.props.setUsers(response.data.items);
+        });
+
+    }
     render() {
+
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+
+        let pages = [];
+        for(let i = 1; i <= pagesCount; i++) {
+                pages.push(i);
+        }
+
 
         return (
             <div>
+                <div>
+                    {pages.map(item => {
+                        return <span onClick={(e)=>this.onPageChanged(item)} className={this.props.currentPage === item ? style.activePage : ''}>{item}</span>;
+                    })}
+                </div>
                 {this.props.users.map((item: any) => {
                     return (
                         <div key={item.userId} className={style.userItem}>

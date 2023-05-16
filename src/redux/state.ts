@@ -29,6 +29,13 @@ type UnfollowUsersActionType = {
     userId: number
 }
 
+type SetCurrenPageActionType = {
+    currentPage: number
+}
+type SetUserTotalCountACActionType = {
+    totalCount: number
+}
+
 type LocationType = {
     city: string
     country: string
@@ -54,7 +61,9 @@ export type ActionsTypes =
     | UpdateNewMessageTextActionType
     | FollowUsersActionType
     | UnfollowUsersActionType
-    | SetUsersActionType;
+    | SetUsersActionType
+    | SetCurrenPageActionType
+    | SetUserTotalCountACActionType;
 
 const store = {
 
