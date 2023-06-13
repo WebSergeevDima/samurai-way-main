@@ -11,6 +11,14 @@ type LocationType = {
     country: string
 }
 
+type InitialStateType = {
+    users: Array<any>
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
+
+}
+
 type UsersType = {
     id: number
     photo: string
@@ -24,12 +32,10 @@ const initialState= {
     users: [],
     pageSize: 5,
     totalUsersCount: 36,
-    currentPage: 3
+    currentPage: 1
 };
 
-const profileReducer = (state: any = initialState, action: any) => {
-
-
+const profileReducer = (state: InitialStateType = initialState, action: any) => {
 
     switch (action.type) {
         case FOLLOW:
@@ -58,6 +64,9 @@ const profileReducer = (state: any = initialState, action: any) => {
         case SET_CURRENT_PAGE: {
             return {...state, currentPage: action.currentPage}
         }
+        case SET_USER_TOTAL_COUNT: {
+            return {...state, currentPage: action.totalCount}
+        }
         default:
             return state
     }
@@ -82,7 +91,7 @@ export const setUsersAC = (users: UsersType[]): ActionsTypes => {
     };
 }
 
-export const setCurrenPageAC = (currentPage: any): ActionsTypes => {
+export const setCurrenPageAC = (currentPage: number): ActionsTypes => {
     return {
         type: SET_CURRENT_PAGE,
         currentPage
@@ -90,7 +99,7 @@ export const setCurrenPageAC = (currentPage: any): ActionsTypes => {
 }
 
 
-export const setUserTotalCountAC = (totalCount: any): ActionsTypes => {
+export const setUserTotalCountAC = (totalCount: number): ActionsTypes => {
     return {
         type: SET_USER_TOTAL_COUNT,
         totalCount

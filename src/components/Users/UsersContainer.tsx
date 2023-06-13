@@ -20,13 +20,12 @@ class UsersAPIContainer extends React.Component<any> {
 
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then((response: any) => {
             this.props.setUsers(response.data.items);
-            this.props.setTotalUserCount(response.data.totalCount);
+            this.props.setTotalUserCount(response.data.totalUsersCount);
         });
 
     }
 
-    onPageChanged = (pageNumber:any) => {
-
+    onPageChanged = (pageNumber:number) => {
         this.props.setCurrenPage(pageNumber);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then((response: any) => {
             this.props.setUsers(response.data.items);
