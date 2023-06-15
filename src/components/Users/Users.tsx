@@ -23,7 +23,7 @@ const Users: FC<UsersType> = (props) => {
         return (
             <div>
                 <div>
-                    {pages.map(item => {
+                    {pages.map((item) => {
                         return <span key={item} onClick={(e)=>props.onPageChanged(item)} className={props.currentPage === item ? style.activePage : ''}>{item}</span>;
                     })}
                 </div>

@@ -4,7 +4,7 @@ const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
-const SET_USER_TOTAL_COUNT = 'SET_CURRENT_PAGE';
+const SET_USER_TOTAL_COUNT = 'SET_USER_TOTAL_COUNT';
 
 type LocationType = {
     city: string
@@ -59,13 +59,13 @@ const profileReducer = (state: InitialStateType = initialState, action: any) => 
                 })
             }
         case SET_USERS: {
-            return {...state, users: [...state.users, ...action.users]}
+            return {...state, users: [...action.users]}
         }
         case SET_CURRENT_PAGE: {
             return {...state, currentPage: action.currentPage}
         }
         case SET_USER_TOTAL_COUNT: {
-            return {...state, currentPage: action.totalCount}
+            return {...state, totalUsersCount: action.totalUsersCount}
         }
         default:
             return state
@@ -99,10 +99,10 @@ export const setCurrenPageAC = (currentPage: number): ActionsTypes => {
 }
 
 
-export const setUserTotalCountAC = (totalCount: number): ActionsTypes => {
+export const setUserTotalCountAC = (totalUsersCount: number): ActionsTypes => {
     return {
         type: SET_USER_TOTAL_COUNT,
-        totalCount
+        totalUsersCount
     };
 }
 

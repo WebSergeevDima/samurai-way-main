@@ -33,7 +33,7 @@ type SetCurrenPageActionType = {
     currentPage: number
 }
 type SetUserTotalCountACActionType = {
-    totalCount: number
+    totalUsersCount: number
 }
 
 type LocationType = {
