@@ -5,6 +5,7 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_USER_TOTAL_COUNT = 'SET_USER_TOTAL_COUNT';
+const IS_FETCHING = 'IS_FETCHING';
 
 type LocationType = {
     city: string
@@ -32,7 +33,8 @@ const initialState= {
     users: [],
     pageSize: 5,
     totalUsersCount: 36,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: false
 };
 
 const profileReducer = (state: InitialStateType = initialState, action: any) => {
@@ -66,6 +68,9 @@ const profileReducer = (state: InitialStateType = initialState, action: any) => 
         }
         case SET_USER_TOTAL_COUNT: {
             return {...state, totalUsersCount: action.totalUsersCount}
+        }
+        case IS_FETCHING: {
+            return {...state, isFetching: action.isFetching}
         }
         default:
             return state
@@ -103,6 +108,13 @@ export const setUserTotalCountAC = (totalUsersCount: number): ActionsTypes => {
     return {
         type: SET_USER_TOTAL_COUNT,
         totalUsersCount
+    };
+}
+
+export const setIsFetchingAC = (isFetching: boolean): ActionsTypes => {
+    return {
+        type: IS_FETCHING,
+        isFetching
     };
 }
 

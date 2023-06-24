@@ -35,6 +35,9 @@ type SetCurrenPageActionType = {
 type SetUserTotalCountACActionType = {
     totalUsersCount: number
 }
+type SetIsFetchingACActionType = {
+    isFetching: boolean
+}
 
 type LocationType = {
     city: string
@@ -63,7 +66,8 @@ export type ActionsTypes =
     | UnfollowUsersActionType
     | SetUsersActionType
     | SetCurrenPageActionType
-    | SetUserTotalCountACActionType;
+    | SetUserTotalCountACActionType
+    | SetIsFetchingACActionType;
 
 const store = {
 
