@@ -77,26 +77,26 @@ const profileReducer = (state: InitialStateType = initialState, action: any) => 
     }
 }
 
-export const followAC = (userId: number): ActionsTypes => {
+export const follow = (userId: number): ActionsTypes => {
     return {
         type: FOLLOW,
         userId
     };
 }
-export const unfollowAC = (userId: number): ActionsTypes => {
+export const unfollow = (userId: number): ActionsTypes => {
     return {
         type: UNFOLLOW,
         userId
     };
 }
-export const setUsersAC = (users: UsersType[]): ActionsTypes => {
+export const setUsers = (users: UsersType[]): ActionsTypes => {
     return {
         type: SET_USERS,
         users
     };
 }
 
-export const setCurrenPageAC = (currentPage: number): ActionsTypes => {
+export const setCurrenPage = (currentPage: number): ActionsTypes => {
     return {
         type: SET_CURRENT_PAGE,
         currentPage
@@ -104,14 +104,14 @@ export const setCurrenPageAC = (currentPage: number): ActionsTypes => {
 }
 
 
-export const setUserTotalCountAC = (totalUsersCount: number): ActionsTypes => {
+export const setUserTotalCount = (totalUsersCount: number): ActionsTypes => {
     return {
         type: SET_USER_TOTAL_COUNT,
         totalUsersCount
     };
 }
 
-export const setIsFetchingAC = (isFetching: boolean): ActionsTypes => {
+export const setIsFetching = (isFetching: boolean): ActionsTypes => {
     return {
         type: IS_FETCHING,
         isFetching
