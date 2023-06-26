@@ -38,6 +38,9 @@ type SetUserTotalCountACActionType = {
 type SetIsFetchingACActionType = {
     isFetching: boolean
 }
+type SetUserProfileACActionType = {
+    profile: any
+}
 
 type LocationType = {
     city: string
@@ -67,7 +70,8 @@ export type ActionsTypes =
     | SetUsersActionType
     | SetCurrenPageActionType
     | SetUserTotalCountACActionType
-    | SetIsFetchingACActionType;
+    | SetIsFetchingACActionType
+    | SetUserProfileACActionType;
 
 const store = {
 

@@ -1,16 +1,15 @@
-import React from "react";
-import './Profile.module.css';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import React from "react";
 
-const Profile: React.FC = (props) => {
+const Profile = (props: any) => {
 
     return (
-        <main>
-            <ProfileInfo/>
+        <>
+            <ProfileInfo profile={props.profile}/>
             <MyPostsContainer/>
-        </main>
+        </>
     );
-};
+}
 
 export default Profile;

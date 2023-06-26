@@ -15,7 +15,7 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
 
     const postTextareaRef = React.createRef<HTMLTextAreaElement>();
 
-    const postsElements = props.postsData.map(item => <Post message={item.message}/>);
+    const postsElements = props.postsData.map(item => <Post message={item.message} id={item.id}/>);
 
     const addPostHandler = () => {
         props.addPost();

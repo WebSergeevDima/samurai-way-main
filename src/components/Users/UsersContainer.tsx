@@ -35,8 +35,6 @@ class UsersAPIContainer extends React.Component<any> {
             this.props.setIsFetching(false);
         });
 
-
-
     }
 
     onPageChanged = (pageNumber:number) => {
